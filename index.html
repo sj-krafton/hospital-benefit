@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -293,7 +292,7 @@ function removeDate(val) {
 function renderDates() {
   const list = document.getElementById("date-list");
   list.innerHTML = selectedDates.map(d => {
-    const label = d.replace(/-/g, ".").replace(/^(\d{4})\./, "$1년 ").replace(/\.(\d{2})\./, "월 $1").replace(/\.(\d{2})$/, "일");
+    const [y,m,day] = d.split("-"); const label = `${y}년 ${parseInt(m)}월 ${parseInt(day)}일`;
     return `<span class="date-tag">${label}<button onclick="removeDate('${d}')" type="button">×</button></span>`;
   }).join("");
 }
