@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -213,11 +214,8 @@
       <div class="field">
         <label>선호 날짜 <span class="req">*</span></label>
         <div id="date-list" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;"></div>
-        <div style="display:flex; gap:8px; align-items:center;">
-          <input type="date" id="date-picker" style="flex:1;" />
-          <button type="button" onclick="addDate()" style="padding:10px 16px; background:#1a56d8; color:#fff; border:none; border-radius:10px; font-size:14px; font-family:inherit; cursor:pointer; white-space:nowrap;">+ 추가</button>
-        </div>
-        <p class="hint">날짜를 여러 개 추가할 수 있어요.</p>
+        <input type="date" id="date-picker" />
+        <p class="hint">날짜 선택 시 자동으로 추가돼요. 여러 개 선택 가능합니다.</p>
       </div>
 
       <div class="field">
@@ -279,6 +277,12 @@ function addDate() {
   renderDates();
   picker.value = "";
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("date-picker").addEventListener("change", function() {
+    addDate();
+  });
+});
 
 function removeDate(val) {
   const idx = selectedDates.indexOf(val);
